@@ -43,18 +43,18 @@
   <header id="header" class="fixed-top header-inner-pages">
     <div class="container d-flex align-items-center justify-content-lg-between">
 
-      <h1 class="logo me-auto me-lg-0"><a href="index.html">Gp<span>.</span></a></h1>
+      <h1 class="logo me-auto me-lg-0"><a href="index.html"><img src="logo.png"><span></span></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+          <li><a class="nav-link scrollto " href="index.html">Home</a></li>
+          <li><a class="nav-link scrollto" href="index.html#about">About</a></li>
+          <li><a class="nav-link scrollto" href="index.html#portfolio">Collections</a></li>
+          <!--<li><a class="nav-link scrollto active" href="#portfolio">Portfolio</a></li>-->
+          <li><a class="nav-link scrollto" href="index.html#team">Artists</a></li>
+         <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
               <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
@@ -70,13 +70,13 @@
               <li><a href="#">Drop Down 3</a></li>
               <li><a href="#">Drop Down 4</a></li>
             </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          </li>-->
+          <li><a class="nav-link scrollto" href="index.html#contact">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="#about" class="get-started-btn scrollto">Get Started</a>
+      <a href="ticket.html" class="get-started-btn scrollto">Get a Ticket</a>
 
     </div>
   </header><!-- End Header -->
@@ -88,29 +88,31 @@
 			<label id="label-register" for="log-reg-show">Login</label>
 			<input type="radio" name="active-log-panel" id="log-reg-show"  checked="checked">
 		</div>
-							
+
 		<div class="register-info-box">
 			<h2>Don't have an account?</h2>
 			<p>Lorem ipsum dolor sit amet</p>
 			<label id="label-login" for="log-login-show">Register</label>
 			<input type="radio" name="active-log-panel" id="log-login-show">
 		</div>
-							
+
 		<div class="white-panel">
-			<div class="login-show">
+			<form class="login-form login-show">
+        <div id="error-message" style="color: red;"></div>
 				<h2>LOGIN</h2>
-				<input type="text" placeholder="Email">
-				<input type="password" placeholder="Password">
-				<input type="button" value="Login">
-				<a href="">Forgot password?</a>
-			</div>
-			<div class="register-show">
+				<input type="text" name="email" placeholder="Email">
+				<input type="password" name="password" placeholder="Password">
+				<input type="submit" value="Login">
+			</form>
+			<form class="register-form register-show" id="registrationForm">
 				<h2>REGISTER</h2>
-				<input type="text" placeholder="Email">
-				<input type="password" placeholder="Password">
-				<input type="password" placeholder="Confirm Password">
-				<input type="button" value="Register">
-			</div>
+				<input type="text" name="email" placeholder="Email">
+				<input type="text" name="first_name" placeholder="First Name">
+				<input type="text" name="last_name" placeholder="Last Name">
+				<input type="password" name="password" placeholder="Password">
+				<input type="password" name="confirm_password" placeholder="Confirm Password">
+				<input type="submit" value="Register">
+			</form>
 		</div>
 	</div>
 <style>
@@ -157,7 +159,7 @@
   .login-reg-panel{
       color:#B8B8B8;
   }
-  .login-reg-panel #label-login, 
+  .login-reg-panel #label-login,
   .login-reg-panel #label-register{
       border:1px solid #9E9E9E;
       padding:0 5px;
@@ -182,11 +184,11 @@
       right:0;
       position:absolute;
       text-align:left;
-      
+
   }
   .right-log{right:50px !important;}
-  
-  .login-show, 
+
+  .login-show,
   .register-show{
       z-index: 1;
       display:none;
@@ -208,7 +210,7 @@
       border: 1px solid #b5b5b5;
       outline: none;
   }
-  .login-show input[type="button"] {
+  .login-show input[type="submit"] {
       max-width: 150px;
       width: 100%;
       background: #444444;
@@ -224,7 +226,7 @@
       display:inline-block;
       padding:10px 0;
   }
-  
+
   .register-show input[type="text"], .register-show input[type="password"]{
       width: 100%;
       display: block;
@@ -233,7 +235,7 @@
       border: 1px solid #b5b5b5;
       outline: none;
   }
-  .register-show input[type="button"] {
+  .register-show input[type="submit"] {
       max-width: 150px;
       width: 100%;
       background: #444444;
@@ -272,28 +274,106 @@
 
 $('.login-reg-panel input[type="radio"]').on('change', function() {
     if($('#log-login-show').is(':checked')) {
-        $('.register-info-box').fadeOut(); 
+        $('.register-info-box').fadeOut();
         $('.login-info-box').fadeIn();
-        
+
         $('.white-panel').addClass('right-log');
         $('.register-show').addClass('show-log-panel');
         $('.login-show').removeClass('show-log-panel');
-        
+
     }
     else if($('#log-reg-show').is(':checked')) {
         $('.register-info-box').fadeIn();
         $('.login-info-box').fadeOut();
-        
+
         $('.white-panel').removeClass('right-log');
-        
+
         $('.login-show').addClass('show-log-panel');
         $('.register-show').removeClass('show-log-panel');
     }
 });
 
+function checkRegistration(email) {
+      // Your logic to check if the user is already registered goes here
+      // For demonstration purposes, let's assume a boolean variable "isRegistered" indicates registration status
+      var isRegistered = false; // Change this to true if user is already registered
+      return isRegistered;
+    }
+
+    // Function to display registration success message or alert for existing email
+    function displaySuccessMessage(event) {
+      event.preventDefault(); // Prevent form submission
+      var emailInput = document.querySelector('.register-form input[name="email"]');
+      var email = emailInput.value.trim().toLowerCase();
+
+      // Check if user is already registered
+      if (checkRegistration(email)) {
+        alert("You have already been registered!");
+      } else {
+        // Perform registration (you can add backend logic here if needed)
+        alert("You have been successfully registered! Please Login!");
+        // Reset the form
+        document.getElementById("registrationForm").reset();
+      }
+      
+    }
+    
+
+    // Add event listener to the registration form
+    document.getElementById("registrationForm").addEventListener("submit", displaySuccessMessage);
+let isLoggedIn = checkUserLoggedIn();
+function checkUserLoggedIn() {
+    return localStorage.getItem('auth-token') !== null;
+}
+
+$('.login-form').on('submit', (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+  const data = Object.fromEntries(formData);
+
+  fetch('http://localhost:3000/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data),
+  }).then(res => {
+    if (res.ok) {
+      return res.json();
+    } else {
+      throw new Error('Invalid email or password'); // Throw error with specific message for incorrect data
+    }
+  }).then(data => {
+    localStorage.setItem('auth-token', data.token);
+    window.location.href = 'ticket.html'; // Redirect to ticket.html if login successful
+  }).catch(error => {
+    console.error('Login failed:', error);
+    // Display error message on the page
+    document.getElementById('error-message').textContent = error.message;
+  });
+});
+
+
+$('.register-form').on('submit', (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+  const data = Object.fromEntries(formData);
+
+  fetch('http://localhost:3000/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data),
+  }).then((res) => res.json()).then((data) => {
+    localStorage.setItem('auth-token', data.token)
+  })
+})
 
 </script>
 
- 
+
 
 </html>

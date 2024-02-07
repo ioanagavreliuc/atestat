@@ -25,6 +25,7 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -44,80 +45,55 @@
   <header id="header" class="fixed-top header-inner-pages">
     <div class="container d-flex align-items-center justify-content-lg-between">
 
-      <h1 class="logo me-auto me-lg-0"><a href="index.html"><img src="logo.png"><span></span></a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <h1 class="logo me-auto me-lg-0">
+        <a href="index.html"><img src="logo.png"><span></span></a>
+    </h1>
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
+    <!-- Navbar -->
+    <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto " href="index.html">Home</a></li>
-          <li><a class="nav-link scrollto" href="index.html#about">About</a></li>
-          <li><a class="nav-link scrollto" href="index.html#portfolio">Collections</a></li>
-          <!--<li><a class="nav-link scrollto active" href="#portfolio">Portfolio</a></li>-->
-          <li><a class="nav-link scrollto" href="index.html#team">Artists</a></li>
-         <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>-->
-          <li><a class="nav-link scrollto" href="index.html#contact">Contact</a></li>
+            <li><a class="nav-link scrollto " href="index.html">Home</a></li>
+            <li><a class="nav-link scrollto" href="index.html#about">About</a></li>
+            <li><a class="nav-link scrollto" href="index.html#portfolio">Collections</a></li>
+            <li><a class="nav-link scrollto" href="index.html#team">Artists</a></li>
+            <li><a class="nav-link scrollto" href="index.html#contact">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+    </nav><!-- .navbar -->
 
-      <a href="ticket.html" class="get-started-btn scrollto">Get a Ticket</a>
+    <!-- Login Button -->
+    <a href="login.html" class="get-started-btn scrollto">Sign in</a>
 
     </div>
-  </header><!-- End Header -->  
- 
-    <form action="reservation.php" method="post">
-      <div class="elem-group">
-        <label for="name">Your Name</label>
-        <input type="text" id="name" name="visitor_name" placeholder="John Doe" pattern=[A-Z\sa-z]{3,20} required>
-      </div>
-      <div class="elem-group">
-        <label for="email">Your E-mail</label>
-        <input type="email" id="email" name="visitor_email" placeholder="john.doe@email.com" required>
-      </div>
-      <hr>
+  </header><!-- End Header -->
+
+    <form class="ticket-form">
       <div class="elem-group inlined">
         <label for="adult">Adults</label>
-        <input type="number" id="adult" name="total_adults" placeholder="2" min="1" required>
+        <input type="number" id="adult" name="adults" placeholder="0" min="0" max="20">
       </div>
       <div class="elem-group inlined">
         <label for="child">Children</label>
-        <input type="number" id="child" name="total_children" placeholder="2" min="0" required>
+        <input type="number" id="child" name="children" placeholder="0" min="0" max="20">
       </div>
       <div class="elem-group inlined">
         <label for="adult">Students</label>
-        <input type="number" id="adult" name="total_adults" placeholder="2" min="1" required>
+        <input type="number" id="adult" name="students" placeholder="0" min="0" max="20">
       </div>
       <div class="elem-group inlined">
         <label for="adult">Seniors</label>
-        <input type="number" id="adult" name="total_adults" placeholder="2" min="1" required>
+        <input type="number" id="adult" name="seniors" placeholder="0" min="0" max="20">
       </div>
-      <div class="elem-group inlined">
-        <label for="checkin-date">Check-in Date</label>
-        <input type="date" id="checkin-date" name="checkin" required>
+      <div class="elem-group align-items-center">
+        <label for="checkin-date">Reservation Date</label>
+        <input type="date" id="checkin-date" name="checkin_date" required>
       </div>
-      <div class="elem-group inlined">
+      <!--<div class="elem-group inlined">
         <label for="checkout-date">Check-out Date</label>
-        <input type="date" id="checkout-date" name="checkout" required>
-      </div>
+        <input type="date" id="checkout-date" name="checkout_date" required>
+      </div>-->
       <div class="elem-group">
-        <label for="room-selection">Select ticket preference</label>
+       <!-- <label for="room-selection">Select ticket preference</label>-->
         <select id="room-selection" name="room_preference" required>
             <option value="">Choose a Ticket from the List</option>
             <option value="full">Full Access</option>
@@ -127,6 +103,7 @@
         </select>
       </div>
       <hr>
+      <div id="error-message" style="color: red; display: none;">Please login to book a ticket.</div>
       <button type="submit">Book Now</button>
     </form>
     <style>
@@ -136,25 +113,25 @@
       padding: 50px;
       margin-top: 1%;
     }
-    
+
     div.elem-group {
       margin: 20px 0;
     }
-    
+
     div.elem-group.inlined {
       width: 49%;
       display: inline-block;
       float: left;
       margin-left: 1%;
     }
-    
+
     label {
       display: block;
       font-family: 'Nanum Gothic';
       padding-bottom: 10px;
       font-size: 1.25em;
     }
-    
+
     input, select, textarea {
       border-radius: 2px;
       border: 2px solid #777;
@@ -164,20 +141,20 @@
       width: 100%;
       padding: 10px;
     }
-    
+
     div.elem-group.inlined input {
       width: 95%;
       display: inline-block;
     }
-    
+
     textarea {
       height: 250px;
     }
-    
+
     hr {
       border: 1px dotted #ccc;
     }
-    
+
     button {
       height: 50px;
       background: orange;
@@ -188,7 +165,7 @@
       border-radius: 4px;
       cursor: pointer;
     }
-    
+
     button:hover {
       border: 2px solid black;
     }
@@ -215,22 +192,58 @@ checkinElem.setAttribute("min", dateTomorrow);
 checkinElem.onchange = function () {
     checkoutElem.setAttribute("min", this.value);
 }
-    </script>
-  
+$(document).ready(function() {
+    const isLoggedIn = localStorage.getItem('auth-token') !== null; // Assuming you store auth token in localStorage
 
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Gp</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
+    if (isLoggedIn) {
+        // Hide the "Login" button and show the "Logout" button
+        $('header').find('.get-started-btn').text('Sign out').addClass('logout-btn');
+    }
+
+    // Handle click event for logout
+    $('header').on('click', '.logout-btn', function() {
+        localStorage.removeItem('auth-token'); // Delete auth token
+        window.location.reload(); // Reload the page to reflect changes
+    });
+});
+
+$('.ticket-form').on('submit', (event) => {
+  event.preventDefault();
+  const adults = parseInt($('#adult').val()) || 0;
+    const children = parseInt($('#child').val()) || 0;
+    const students = parseInt($('#students').val()) || 0;
+    const seniors = parseInt($('#seniors').val()) || 0;
+
+    if (adults === 0 && children === 0 && students === 0 && seniors === 0) {
+        alert('Please buy at least one ticket category.');
+        return;
+    }
+  const token = localStorage.getItem('auth-token');
+  if (!token) {
+    $('#error-message').show(); // Show the error message
+    return; // Stop further execution
+  } else {
+    $('#error-message').hide(); // Hide the error message if previously shown
+  }
+
+  const formData = new FormData(event.target);
+  const data = Object.fromEntries(formData);
+
+  fetch('http://localhost:3000/booking', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token,
+    },
+    body: JSON.stringify(data),
+  }).then(() => {
+    window.location.pathname = '/redirect.html';
+  });
+});
+
+
+    </script>
+
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

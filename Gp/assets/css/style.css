@@ -186,6 +186,9 @@ h6 {
 */
 .navbar {
   padding: 0;
+  flex-grow: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .navbar ul {
@@ -200,6 +203,10 @@ h6 {
   position: relative;
 }
 
+.confirmation-message {
+  text-align: center;
+  margin-top: 300px;
+}
 .navbar a,
 .navbar a:focus {
   display: flex;
